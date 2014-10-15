@@ -1,0 +1,17 @@
+Package: RnaSeqSampleSizeData
+Type: Package
+Title: RnaSeqSampleSizeData
+Version: 0.0.1
+Date: 2014-10-15
+Author: Shilin Zhao, Chung-I Li, Yan Guo, Quanhu Sheng, Yu Shyr
+Maintainer: Shilin Zhao <shilin.zhao@vanderbilt.edu>
+Description: RnaSeqSampleSizeData package provides the read counts and
+    dispersion distribution from real RNA-seq experiments. It can be used by
+    RnaSeqSampleSize package to estimate sample size and power for RNA-seq
+    experiment design.
+License: GPL (>= 2)
+LazyLoad: yes
+LazyData: false
+Depends:
+    R (>= 2.10)
+biocViews: ExperimentalDesign, Sequencing, RNASeq
