@@ -6,6 +6,9 @@
 \usage{
 TCGA_READ
 }
+\value{
+A class 'DGEList' from edgeR package.
+}
 \description{
 Read counts and dispersion distribution for genes in TCGA READ data.
 }

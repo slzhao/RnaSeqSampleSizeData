@@ -1,0 +1,41 @@
+%\VignetteEngine{knitr::knitr}
+% \VignetteIndexEntry{RnaSeqSampleSizeData: Read counts and dispersion distribution from real data for sample size estimation of RNA-seq experiment}
+% \VignettePackage{RnaSeqSampleSizeData}
+\documentclass[12pt]{article}
+\textwidth 6.75in
+\textheight 9.5in
+\topmargin -.875in
+\oddsidemargin -.06in
+\evensidemargin -.06in
+
+<<style-knitr, eval=TRUE, echo=FALSE, results="asis">>=
+BiocStyle::latex()
+@
+
+\begin{document}
+\title{RnaSeqSampleSizeData: Read counts and dispersion distribution from real data for sample size estimation of RNA-seq experiment}
+\author{Shilin Zhao}
+\maketitle
+
+\section{Introduction}
+Sample size estimation is the most important issue in the design of RNA sequencing experiments. We developed a sample size estimation method based on the distributions of gene read counts and dispersions from real data. The uses can use their own prior data to do sample size estimation, and we also provide RnaSeqSampleSizeData package, which contains the read counts and dispersion distribution from some real datasets and can be used to do sample size estimation.
+
+\section{Data source}
+\subsection{13 RNA-seq datasets from TCGA database}
+The read counts data of RNA-seq experiments for 13 different cancer types were extracted from the level 3 data of TCGA database with the following steps:
+\begin{enumerate}
+  \item For each cancer type, downloading the .genes.results file for every sample from Open-Access HTTP Directory of Cancer Genome Atlas website \url{https://tcga-data.nci.nih.gov/tcga/tcgaDownload.jsp}. For example, the files for all BRCA samples can be downloaded from \url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/brca/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/};
+  \item For each cancer type, combining the raw\_count column in each file into a single file, so that the columns represented samples with this cancer type, and the rows represented genes;
+  \item Loading the file to R and using \emph{est\_count\_dispersion} function in RnaSeqSampleSize package to estimate the read counts and dispersion distribution for each cancer type;
+\end{enumerate}
+
+As a result, the distribution data for 13 cancer types was packaged in RnaSeqSampleSizeData package and can be used with following names:
+
+<<showData,echo=F,cache=F>>=
+data(package="RnaSeqSampleSizeData")$results[,"Item"]
+@
+
+\section{Usage}
+Please refer to Section 3 (Estimation of sample size or power by prior real data) in vignette of RnaSeqSampleSize package to see how to estimate sample size or power with the datasets in RnaSeqSampleSizeData package.
+
+\end{document}

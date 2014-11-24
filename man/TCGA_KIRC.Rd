@@ -6,6 +6,9 @@
 \usage{
 TCGA_KIRC
 }
+\value{
+A class 'DGEList' from edgeR package.
+}
 \description{
 Read counts and dispersion distribution for genes in TCGA KIRC data.
 }

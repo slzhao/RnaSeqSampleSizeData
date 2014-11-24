@@ -6,6 +6,9 @@
 \usage{
 TCGA_PRAD
 }
+\value{
+A class 'DGEList' from edgeR package.
+}
 \description{
 Read counts and dispersion distribution for genes in TCGA PRAD data.
 }
