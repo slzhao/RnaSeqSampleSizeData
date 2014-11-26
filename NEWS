@@ -1,3 +1,9 @@
+2014-11-25
+RnaSeqSampleSizeData 0.99.3:
+ * The TCGA datasets were updated to the latest;
+ * The urls for datasets downloading were added to the help files;
+ * Other improvement based on the comments from Bioconductor reviewer;
+ 
 2014-11-18
 RnaSeqSampleSizeData 0.99.2:
  * The vignette was switched to a BiocStyle;

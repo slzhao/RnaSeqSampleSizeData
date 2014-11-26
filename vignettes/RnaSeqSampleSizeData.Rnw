@@ -13,29 +13,48 @@ BiocStyle::latex()
 @
 
 \begin{document}
-\title{RnaSeqSampleSizeData: Read counts and dispersion distribution from real data for sample size estimation of RNA-seq experiment}
-\author{Shilin Zhao}
+\bioctitle[RnaSeqSampleSizeData: Data for sample size estimation]{RnaSeqSampleSizeData: Read counts and dispersion distribution from real data for sample size estimation of RNA-seq experiment}
+\author{Shilin Zhao\footnote{zhaoshilin@gmail.com}}
 \maketitle
 
 \section{Introduction}
-Sample size estimation is the most important issue in the design of RNA sequencing experiments. We developed a sample size estimation method based on the distributions of gene read counts and dispersions from real data. The uses can use their own prior data to do sample size estimation, and we also provide RnaSeqSampleSizeData package, which contains the read counts and dispersion distribution from some real datasets and can be used to do sample size estimation.
+Sample size estimation is the most important issue in the design of RNA sequencing experiments. We developed a sample size estimation method based on the distributions of gene read counts and dispersions from real data. The uses can use their own prior data to do sample size estimation, and we also provide \Biocexptpkg{RnaSeqSampleSizeData} package, which contains the read counts and dispersion distribution from some real datasets and can be used to do sample size estimation.
 
 \section{Data source}
 \subsection{13 RNA-seq datasets from TCGA database}
-The read counts data of RNA-seq experiments for 13 different cancer types were extracted from the level 3 data of TCGA database with the following steps:
+The TCGA datasets in RnaSeqSampleSizeData were downloaded by \software{TCGA-Assembler} at Nov 25 2014. They can be downloaded and processed with the following steps:
+\subsubsection{Illustration of file URLs on TCGA database}
+The TCGA datasets can be downloaded manually from Open-Access HTTP Directory of Cancer Genome Atlas website \url{https://tcga-data.nci.nih.gov/tcga/tcgaDownload.jsp}. For example, the lastes RNA-seq dataset for all BRCA samples can be found at \url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/brca/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_BRCA.IlluminaHiSeq_RNASeqV2.Level_3.1.10.0/}. And the .rsem.genes.results files contain the raw counts data.
+The download link structure includes five parts and an illustration example can be found in the Supplementary Figure 1 from \url{http://www.nature.com/nmeth/journal/v11/n6/extref/nmeth.2956-S1.pdf}. Here is the explanation for the link of latest BRCA samples:
 \begin{enumerate}
-  \item For each cancer type, downloading the .genes.results file for every sample from Open-Access HTTP Directory of Cancer Genome Atlas website \url{https://tcga-data.nci.nih.gov/tcga/tcgaDownload.jsp}. For example, the files for all BRCA samples can be downloaded from \url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/brca/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/};
-  \item For each cancer type, combining the raw\_count column in each file into a single file, so that the columns represented samples with this cancer type, and the rows represented genes;
-  \item Loading the file to R and using \emph{est\_count\_dispersion} function in RnaSeqSampleSize package to estimate the read counts and dispersion distribution for each cancer type;
+  \item URL of the root directory including public TCGA data: https://tcga-data.nci.nih.gov/tcgafiles/ftp\_auth/distro\_ftpusers/anonymous/tumor/;
+  \item Cancer type: brca;
+  \item Institution that generated the data: unc.edu;
+  \item Assay platform: illuminahiseq\_rnaseqv2;
+  \item Version number: 3.1.10.0;
 \end{enumerate}
 
-As a result, the distribution data for 13 cancer types was packaged in RnaSeqSampleSizeData package and can be used with following names:
-
+\subsubsection{Downloading datasets from TCGA database by TCGA-Assembler}
+The \software{TCGA-Assembler} is an open-source, freely available tool that automatically downloads, assembles and processes public The Cancer Genome Atlas (TCGA) data. The paper can be found at \url{http://www.compgenome.org/TCGA-Assembler/} and the software can be found at \url{http://www.compgenome.org/TCGA-Assembler/}. For example, if we need to download RNA-seq data for all READ samples, we can use the following R codes:
+<<TCGAAssembler,echo=TRUE,tidy=TRUE,cache=TRUE,eval=FALSE>>=
+RNASeqRawData = DownloadRNASeqData(traverseResultFile = "./DirectoryTraverseResult_Nov-25-2014.rda", saveFolderName = ".", cancerType = "READ",assayPlatform = "RNASeqV2", dataType = "rsem.genes.results");
+@
+\subsubsection{Processing downloaded data}
+\begin{enumerate}
+  \item After downloading the datasets, a file named by "cancerType"\_"institution"\_"platform"\_rsem.genes.results\_"date".txt will be generated. For the READ example, the file will be READ\_\_unc.edu\_\_illuminaga\_rnaseqv2\_\_rsem.genes.results\_\_Nov-25-2014.txt. The columns represented samples with this cancer type, and the rows represented genes. For each sample, "raw\_count" and "scaled\_estimate" will be stored.
+  \item We will select all the cancer samples (barcode 01A), and the "raw\_count" columns will be extracted and rounded to integer to make a new expression matrix file for further analysis.
+  \item \Biocexptpkg{RnaSeqSampleSize} package will be loaded and the \Rfunction{est\_count\_dispersion} function will be used to estimate the read counts and dispersion distribution for each cancer type;
+\end{enumerate}
+As a result, the distribution data for 13 cancer types was packaged in \Biocexptpkg{RnaSeqSampleSizeData} package and can be used with following names:
 <<showData,echo=F,cache=F>>=
 data(package="RnaSeqSampleSizeData")$results[,"Item"]
 @
+\subsubsection{More details about the workflow of RNA-Seq quantification}
+The workflow of RNA-Seq quantification for TCGA data can be acessed at the datasets download link. For example, the workflow for BRCA can be found at \url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/brca/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_BRCA.IlluminaHiSeq_RNASeqV2.Level_3.1.10.0/DESCRIPTION.txt}.
+
+From the workflow, we can find quantification results of TCGA datasets were obtained using the RSEM method (Paper at \url{http://www.biomedcentral.com/1471-2105/12/323}. Software at \url{http://deweylab.biostat.wisc.edu/rsem/}). And the "raw\_count" in the TCGA result was "expected\_count" in RESM method, which is the sum of the posterior probability of each read comes from this gene over all reads. It is generally a non-integer value and we will round it to integer for further analysis.
 
 \section{Usage}
-Please refer to Section 3 (Estimation of sample size or power by prior real data) in vignette of RnaSeqSampleSize package to see how to estimate sample size or power with the datasets in RnaSeqSampleSizeData package.
+Please refer to Section 3.2 (Estimation of sample size or power by prior real data) in vignette of \Biocpkg{RnaSeqSampleSize} package to see how to estimate sample size or power with the datasets in \Biocexptpkg{RnaSeqSampleSizeData} package.
 
 \end{document}
