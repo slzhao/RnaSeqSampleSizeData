@@ -3,6 +3,9 @@
 \name{TCGA_LUSC}
 \alias{TCGA_LUSC}
 \title{Read counts and dispersion distribution for genes in TCGA LUSC data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/lusc/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_LUSC.IlluminaHiSeq_RNASeqV2.Level_3.1.9.0/}
+}
 \usage{
 TCGA_LUSC
 }

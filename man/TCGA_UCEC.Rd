@@ -3,6 +3,9 @@
 \name{TCGA_UCEC}
 \alias{TCGA_UCEC}
 \title{Read counts and dispersion distribution for genes in TCGA UCEC data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/ucec/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_UCEC.IlluminaHiSeq_RNASeqV2.Level_3.1.10.0/}
+}
 \usage{
 TCGA_UCEC
 }

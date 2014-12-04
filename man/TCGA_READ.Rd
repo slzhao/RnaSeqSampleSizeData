@@ -3,6 +3,9 @@
 \name{TCGA_READ}
 \alias{TCGA_READ}
 \title{Read counts and dispersion distribution for genes in TCGA READ data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/read/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_READ.IlluminaHiSeq_RNASeqV2.Level_3.1.8.0/}
+}
 \usage{
 TCGA_READ
 }

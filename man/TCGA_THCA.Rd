@@ -3,6 +3,9 @@
 \name{TCGA_THCA}
 \alias{TCGA_THCA}
 \title{Read counts and dispersion distribution for genes in TCGA THCA data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/thca/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_THCA.IlluminaHiSeq_RNASeqV2.Level_3.1.12.0/}
+}
 \usage{
 TCGA_THCA
 }

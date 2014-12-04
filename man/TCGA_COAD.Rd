@@ -3,6 +3,9 @@
 \name{TCGA_COAD}
 \alias{TCGA_COAD}
 \title{Read counts and dispersion distribution for genes in TCGA COAD data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/coad/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_COAD.IlluminaHiSeq_RNASeqV2.Level_3.1.9.0/}
+}
 \usage{
 TCGA_COAD
 }

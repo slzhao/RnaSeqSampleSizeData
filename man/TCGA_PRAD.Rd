@@ -3,6 +3,9 @@
 \name{TCGA_PRAD}
 \alias{TCGA_PRAD}
 \title{Read counts and dispersion distribution for genes in TCGA PRAD data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/prad/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_PRAD.IlluminaHiSeq_RNASeqV2.Level_3.1.12.0/}
+}
 \usage{
 TCGA_PRAD
 }

@@ -3,6 +3,9 @@
 \name{TCGA_HNSC}
 \alias{TCGA_HNSC}
 \title{Read counts and dispersion distribution for genes in TCGA HNSC data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/hnsc/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_HNSC.IlluminaHiSeq_RNASeqV2.Level_3.1.7.0/}
+}
 \usage{
 TCGA_HNSC
 }

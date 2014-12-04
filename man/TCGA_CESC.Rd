@@ -3,6 +3,9 @@
 \name{TCGA_CESC}
 \alias{TCGA_CESC}
 \title{Read counts and dispersion distribution for genes in TCGA CESC data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/cesc/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/}
+}
 \usage{
 TCGA_CESC
 }

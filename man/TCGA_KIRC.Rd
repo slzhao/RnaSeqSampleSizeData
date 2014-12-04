@@ -3,6 +3,9 @@
 \name{TCGA_KIRC}
 \alias{TCGA_KIRC}
 \title{Read counts and dispersion distribution for genes in TCGA KIRC data.}
+\source{
+\url{https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/kirc/cgcc/unc.edu/illuminahiseq_rnaseqv2/rnaseqv2/unc.edu_KIRC.IlluminaHiSeq_RNASeqV2.Level_3.1.5.0/}
+}
 \usage{
 TCGA_KIRC
 }
